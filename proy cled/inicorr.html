@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro e Inicio de Sesión del consejo Latinoamericano de Especializacion en Derecho</title>
+    <link rel="stylesheet" href="inic.css">
+</head>
+<body>
+    <div class="container"> 
+    <img src="cled.jpeg" alt="Logo" class="logo">
+        <h2>Bienvenido</h2>
+        <h2>Al Consejo Latinoamericano de Especializacion en Derecho</h2>
+        <div class="button-group">       
+            <button onclick="mostrarRegistro()">Registro</button>
+            <button onclick="mostrarLogin()">Inicio de sesión</button>
+        </div>
+
+        <!-- FORMULARIO REGISTRO -->
+        <form id="registroForm" style="display: none;">
+            <label>Nombre:</label>
+            <input type="text" id="nombreRegistro" required>
+
+            <label>Correo:</label>
+            <input type="email" id="correoRegistro" required>
+
+            <label>Contraseña:</label>
+            <input type="password" id="passwordRegistro" required>
+
+            <button type="button" onclick="registrarUsuario()">Registrar</button>
+            <p id="registroMensaje"></p>
+        </form>
+
+        <!-- FORMULARIO LOGIN -->
+        <form id="loginForm" style="display: none;">
+            <label>Nombre:</label>
+            <input type="text" id="nombreLogin" required>
+
+            <label>Contraseña:</label>
+            <input type="password" id="passwordLogin" required>
+
+            <button type="button" onclick="iniciarSesion()">Iniciar Sesión</button>
+            <p id="loginMensaje"></p>
+        </form>
+    </div>
+
+    <script>
+        function mostrarRegistro() {
+            document.getElementById("registroForm").style.display = "flex";
+            document.getElementById("loginForm").style.display = "none";
+            limpiarMensajes();
+        }
+
+        function mostrarLogin() {
+            document.getElementById("registroForm").style.display = "none";
+            document.getElementById("loginForm").style.display = "flex";
+            limpiarMensajes();
+        }
+
+        function limpiarMensajes() {
+            document.getElementById("registroMensaje").innerText = "";
+            document.getElementById("loginMensaje").innerText = "";
+        }
+
+        function registrarUsuario() {
+    const nombre = document.getElementById("nombreRegistro").value.trim();
+    const correo = document.getElementById("correoRegistro").value.trim();
+    const password = document.getElementById("passwordRegistro").value;
+
+    const mensaje = document.getElementById("registroMensaje");
+
+    // Expresiones regulares
+    const soloLetras = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/;
+    const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!nombre || !correo || !password) {
+        mensaje.innerText = "Todos los campos son obligatorios.";
+        mensaje.style.color = "red";
+        return;
+    }
+
+    if (!soloLetras.test(nombre)) {
+        mensaje.innerText = "El nombre solo debe contener letras.";
+        mensaje.style.color = "red";
+        return;
+    }
+
+    if (!correoValido.test(correo)) {
+        mensaje.innerText = "Ingrese un correo electrónico válido.";
+        mensaje.style.color = "red";
+        return;
+    }
+
+    // Guardar datos localmente (simulación)
+    localStorage.setItem("usuario", nombre);
+    localStorage.setItem("correo", correo);
+    localStorage.setItem("password", password);
+
+    mensaje.innerText = "Registro exitoso. Ahora puede iniciar sesión.";
+    mensaje.style.color = "green";
+
+    // Limpiar campos
+    document.getElementById("nombreRegistro").value = "";
+    document.getElementById("correoRegistro").value = "";
+    document.getElementById("passwordRegistro").value = "";
+}
+
+        function iniciarSesion() {
+            const nombreLogin = document.getElementById("nombreLogin").value.trim();
+            const passwordLogin = document.getElementById("passwordLogin").value;
+
+            const usuarioGuardado = localStorage.getItem("usuario");
+            const passwordGuardada = localStorage.getItem("password");
+
+            if (nombreLogin === usuarioGuardado && passwordLogin === passwordGuardada) {
+                window.location.href = "cursos.html"; // Redirige a página de cursos
+            } else {
+                document.getElementById("loginMensaje").innerText = "Usuario o contraseña incorrectos.";
+                document.getElementById("loginMensaje").style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

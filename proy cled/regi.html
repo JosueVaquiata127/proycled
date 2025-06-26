@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro e Inicio de Sesión</title>
+    <link rel="stylesheet" href="stro.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Bienvenido</h2>
+        <div class="button-group">
+            <button onclick="mostrarFormulario()">Registro</button>
+            <button onclick="irAInicioSesion()">Inicio de sesión</button>
+        </div>
+
+        <form id="formularioRegistro" action="/registro" method="POST">
+            <label for="nombres">Nombres:</label>
+            <input type="text" name="nombres" required>
+
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" name="apellidos" required>
+
+            <label for="nit_ci">NIT o CI (con extensión):</label>
+            <input type="text" name="nit_ci" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" name="telefono" required>
+
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" name="ciudad" required>
+
+            <label for="departamento">Departamento:</label>
+            <input type="text" name="departamento" required>
+
+            <button type="submit" class="btn-submit">Registrar</button>
+        </form>
+    </div>
+
+    <script>
+        function mostrarFormulario() {
+            document.getElementById("formularioRegistro").style.display = "flex";
+        }
+
+        function irAInicioSesion() {
+            window.location.href = "inicio.html"; // Redirige a tu login
+        }
+    </script>
+</body>
+</html>

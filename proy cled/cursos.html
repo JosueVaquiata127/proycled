@@ -1,0 +1,219 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLED</title>
+<link rel="stylesheet" href="cdiseño.css">
+</head>
+<body>
+<header>
+<h1 class="titulo">CONSEJO LATINOAMERICANO DE ESPECILIZACION EN DERECHO</h1>
+</header>
+<section>
+<div class="contenido-hero ubicacion">
+</div>
+</section>
+<div class="nav-bg">
+<nav class="navegacion_principal contenedor">
+<a href="#">🏠Inicio🏠</a>
+<a href="#">⚖️Cursos⚖️</a>
+<a href="#">🤝🏻Alianzas🤝🏻</a>
+<a href="#">☎️Contactos☎️</a>
+</nav>
+</div>
+<main class="contenedor sombra">
+<div class="container">
+<section class="area">
+<h2>CURSO ESPECIALIZADO EN:</h2>
+<p>EXTENSION POR DURACION MAXIMA DEL PROCESO PENAL.</p>
+<img src="Cursos/procp.jpeg" alt="HTML" class="inc" >
+<div class="button-group">       
+    <button onclick="mcurso()">Tomar Curso</button>
+</div>
+</section>
+<section class="area">
+<h2>CURSO ESPECIALIZADO EN:</h2>
+<p>DEFENSA ANTE LA GESTORA Y LAS CAJAS DE SALUD.</p>
+<img src="Cursos/def.jpeg" alt="HTML"  class="inc" >
+<div class="button-group">       
+    <button onclick="mcurso()">Tomar Curso</button>
+</div>
+</section>
+<section class="area">
+<h2>CURSO ASESORIA EN:</h2>
+<p>ASPECTOS LEGALES DEL FUTBOL.</p>
+<img src="Cursos/fut.jpeg" alt="HTML" class="inc ">
+<div class="button-group">       
+    <button onclick="mcurso()">Tomar Curso</button>
+</div>
+</section>
+<section class="area">
+<h2>CURSO ESPECIALIZADO EN: </h2>
+<P>INTELIGENCIA ARTIFICIAL EN LA INVESTIGACION PENAL.</P>
+<img src="Cursos/ia.jpeg" alt="HTML" class="inc">
+<div class="button-group">       
+    <button onclick="mcurso()">Tomar Curso</button>
+</div>
+</section>
+<section class="area">
+<h2>CURSO ESPECIALIZADO EN: </h2>
+<p>TRAMITES INTERNACIONALES.</p>
+<img src="Cursos/tra.jpeg" alt="HTML" class="inc" >
+<div class="button-group">       
+    <button onclick="mcurso()">Tomar Curso</button>
+</div>
+</section>
+<section class=" area">
+<h2>CURSO ESPECIALIZADO EN:</h2>
+<p>JUICIOS POR DAÑOS Y PERJUICIOS.</p>
+<img src="Cursos/juicio.jpeg" alt="HTML" class="inc">
+<div class="button-group">       
+    <button onclick="mcurso()">Tomar Curso</button>
+</div>
+</section>
+</div>
+<!-- Formulario de Inscripción (oculto al inicio) -->
+<div id="formularioCurso" style="display: none;" class="contenedor sombra">
+    <h2>Formulario de Inscripción al Curso</h2>
+    <form onsubmit="return registrarInscripcion()">
+        <label>Nombre:</label>
+        <input type="text" id="nombre" required>
+
+        <label>Apellido:</label>
+        <input type="text" id="apellido" required>
+
+        <label>Cédula de Identidad:</label>
+        <input type="text" id="ci" required>
+
+        <label>Teléfono:</label>
+        <input type="text" id="telefono" required>
+
+        <label>Ciudad:</label>
+        <input type="text" id="ciudad" required>
+
+        <label>Departamento:</label>
+        <select id="departamento" required>
+            <option value="">Seleccione un departamento</option>
+            <option value="La Paz">La Paz</option>
+            <option value="Cochabamba">Cochabamba</option>
+            <option value="Santa Cruz">Santa Cruz</option>
+            <option value="Oruro">Oruro</option>
+            <option value="Potosí">Potosí</option>
+            <option value="Chuquisaca">Chuquisaca</option>
+            <option value="Tarija">Tarija</option>
+            <option value="Beni">Beni</option>
+            <option value="Pando">Pando</option>
+            <option value="Otro">Otro</option>
+        </select>
+
+        <label>País:</label>
+        <select id="pais" onchange="verificarPais()" required>
+            <option value="">Seleccione un país</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Brasil">Brasil</option>
+            <option value="Chile">Chile</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="El Salvador">El Salvador</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="Honduras">Honduras</option>
+            <option value="México">México</option>
+            <option value="Nicaragua">Nicaragua</option>
+            <option value="Panamá">Panamá</option>
+            <option value="Paraguay">Paraguay</option>
+            <option value="Perú">Perú</option>
+            <option value="República Dominicana">República Dominicana</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="Otro">Otro</option>
+        </select>
+
+        <div id="otroPais" style="display: none;">
+            <label>Especifique país:</label>
+            <input type="text" id="paisOtro">
+        </div>
+
+        <label>Método de pago:</label>
+        <select id="pago" onchange="mostrarPago()">
+            <option value="">Seleccione</option>
+            <option value="Tarjeta">Tarjeta</option>
+            <option value="PayPal">PayPal</option>
+            <option value="QR">QR</option>
+        </select>
+
+        <div id="datosTarjeta" style="display: none;">
+            <label>Número de Tarjeta:</label>
+            <input type="text" id="numeroTarjeta">
+        </div>
+
+        <button type="submit">Confirmar Inscripción</button>
+        <p id="mensajeFinal"></p>
+    </form>
+</div>
+<!-- Interfaz de Confirmación del Curso -->
+<div id="infoCurso" style="display: none;" class="contenedor sombra">
+    <h2>📚 Información del Curso</h2>
+    <p><strong>Curso:</strong> Inteligencia Artificial en la Investigación Penal</p>
+    <p><strong>Inicio:</strong> Lunes 1 de Julio, 19:00 hrs (Hora Bolivia)</p>
+    <p><strong>Duración:</strong> 4 semanas</p>
+    <p><strong>Modalidad:</strong> Virtual - Zoom</p>
+    <p><strong>Enlace de acceso:</strong> <a href="https://zoom.us/j/123456789" target="_blank">Ir al Aula Virtual</a></p>
+</div>
+</main>
+<script>
+    function mcurso() {
+        document.getElementById("formularioCurso").scrollIntoView({ behavior: "smooth" });
+        document.getElementById("formularioCurso").style.display = "block";
+        document.getElementById("mensajeFinal").innerText = "";
+    }
+
+    function verificarPais() {
+        const pais = document.getElementById("pais").value;
+        document.getElementById("otroPais").style.display = (pais === "Otro") ? "block" : "none";
+    }
+
+    function mostrarPago() {
+        const metodo = document.getElementById("pago").value;
+        document.getElementById("datosTarjeta").style.display = (metodo === "Tarjeta") ? "block" : "none";
+    }
+
+    function registrarInscripcion() {
+        const nombre = document.getElementById("nombre").value.trim();
+        const apellido = document.getElementById("apellido").value.trim();
+        const ci = document.getElementById("ci").value.trim();
+        const telefono = document.getElementById("telefono").value.trim();
+        const ciudad = document.getElementById("ciudad").value.trim();
+        const departamento = document.getElementById("departamento").value.trim();
+        const pais = document.getElementById("pais").value === "Otro"
+                     ? document.getElementById("paisOtro").value.trim()
+                     : document.getElementById("pais").value;
+        const metodoPago = document.getElementById("pago").value;
+        const tarjeta = document.getElementById("numeroTarjeta").value.trim();
+        const mensaje = document.getElementById("mensajeFinal");
+
+        if (!nombre || !apellido || !ci || !telefono || !ciudad || !departamento || !pais || !metodoPago) {
+            mensaje.innerText = "Por favor, complete todos los campos obligatorios.";
+            mensaje.style.color = "red";
+            return false;
+        }
+
+        if (metodoPago === "Tarjeta" && tarjeta.length < 8) {
+            mensaje.innerText = "Número de tarjeta inválido.";
+            mensaje.style.color = "red";
+            return false;
+        }
+
+        mensaje.innerText = "✅ ¡Inscripción exitosa al curso!";
+        mensaje.style.color = "green";
+        return false; // Evita que recargue la página
+    }
+</script>
+  </body>
+<footer>
+<p>Todos los derechos reservados ConsejoLatinoamericanodeEspecializacionenDerecho.bo</p>
+</footer>
+</html>
